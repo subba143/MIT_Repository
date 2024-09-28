@@ -1,0 +1,77 @@
+				PYTHON WITH DB CONNECTION CONNECTIONS 
+
+PEP 249 -- PYTHON DATABASE API SPECIFICATION V2.0
+
+1.cmd --> pip --version
+	  py --version 
+	  pip install cx_Oracle or pip install mysql==0.0.2  
+          pip uninstall cx_Oracle or pip install mysql 
+
+	  cx_Oracle ==> Oracle Database          pymysql ==> MySQL
+
+
+2.Create One Folder(Oracla_database)
+  Insaid Create One File.py(test.py)
+
+
+3.import cx_Oracle
+
+HOW TO CHECK ORACLE SERVICE NAME,HOST
+OPEN SQL PLUS ==>   SQL> SELECT NAME FROM V$SERVICES;
+		          (or)
+		  SQL>SELECT * FROM V$SERVICES;
+			   (or)
+		  SQL>SELECT NAME(or)* FROM V$ACTIVE_SERVICES;
+
+NAME
+----------------------------------------------------------------
+orcl7XDB
+SYS$BACKGROUND
+SYS$USERS
+orcl7
+
+
+HOST
+----
+1521
+
+
+4.connection = cx_Oracle.connect('system/subbu@localhost')
+
+5.cursor = connection.cursor()
+
+6.cursor.execute()
+  cursor.executemany()
+
+7.cursor.fetchone()
+  cursor.fetchmany()
+  cursor.fetchall()
+
+
+8.connection.commit()
+  connection.rollback()
+
+
+9.cursor.close()
+  connection.close()
+-------------------------------------------------------------------------------------------
+
+# Python Wirh Database_Connection_Complete Structure 
+
+import cx_Oracle
+connection = cx_Oracle.connect('system/subbu@//localhost:1521/orcl7')
+print(connection.version)
+cursor = connection.cursor()
+sql_create = '''
+CREATE TABLE MY_DETAILS(
+    FIRST_NAME VARCHAR2(50),
+    LAST_NAME VARCHAR2(50),
+    COMPANY VARCHAR2(70),
+    AGE NUMBER
+    )
+'''
+cursor.execute(sql_create)
+print('Table Created')
+          
+
+
